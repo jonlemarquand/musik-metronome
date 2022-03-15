@@ -1,10 +1,29 @@
 <template>
-    <button type="button" class="timer-button timer-button--go">GO</button>
+    <button
+        type="button"
+        class="timer-button"
+        :class="activeTask ? 'timer-button--stop' : 'timer-button--go'"
+        @click="setActive"
+    >
+        {{ activeTask ? 'STOP' : 'GO'}}
+    </button>
 </template>
 
 <script>
+
 export default {
-    name: "TimerInputButton"
+    name: "TimerInputButton",
+    computed: {
+        activeTask() {
+            return this.$store.state.activeTask
+        }
+    },
+    methods: {
+        setActive() {
+            this.$store.commit('setActive')
+            console.log(this.$store.state.activeTask)
+        }
+    }
 }
 </script>
 
