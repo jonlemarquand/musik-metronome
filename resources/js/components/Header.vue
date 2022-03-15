@@ -14,6 +14,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '~@/_variables.scss';
 
+header {
+    margin-bottom: $space-4;
+    margin-top: $space-1;
+}
 </style>
