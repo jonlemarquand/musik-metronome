@@ -1,0 +1,78 @@
+/*
+* COLORS
+*/
+$colorPink: #FE3A9E;
+$colorGreen: #60E99E;
+$colorWhite: #ffffff;
+$colorBlack: #323232;
+$colorGrey: #979797;
+$colorGreenFaded: rgba(98, 234, 159, 0.2);
+
+/*
+* FONTS
+*/
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;600;700&family=Teko:wght@500;600&display=swap');
+
+$primaryFont: 'Teko', sans-serif;
+$secondaryFont: 'Hind', sans-serif;
+
+/*
+* SIZES AND LAYOUT
+*/
+
+/* ---------- Layout  --------------- */
+$narrow-container: 770px;
+$max-container: 1400px;
+$heading-container: 885px;
+
+/* --------------- Spacing ---------------------- */
+//1 smallest - 10 biggest
+$space-10: 120px;
+$space-9: 96px;
+$space-8: 80px;
+$space-7: 72px;
+$space-6: 56px;
+$space-5: 40px;
+$space-4: 32px;
+$space-3: 24px;
+$space-2: 16px;
+$space-1: 8px;
+
+/* ---------- Breakpoints  --------------- */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1440px;
+$breakpoint-container-touch: $max-container + $space-4; //When elements within the container start to touch the edges -
+$breakpoint-nav: 1180px; //used for nav-menu to mobile
+
+@mixin breakpoint($class) {
+    @if $class == sm {
+        @media (min-width: $breakpoint-sm) { @content; }
+    }
+    @else if $class == md {
+        @media (min-width: $breakpoint-md) { @content; }
+    }
+    @else if $class == lg {
+        @media (min-width: $breakpoint-lg) { @content; }
+    }
+    @else if $class == xl {
+        @media (min-width: $breakpoint-xl) { @content; }
+    }
+    @else if $class == container {
+        @media (min-width: $breakpoint-container-touch) { @content; }
+    }
+    @else if $class == navWidth {
+        @media (min-width: $breakpoint-nav) { @content; }
+    }
+    @else {
+        @warn "Breakpoint mixin supports: xs, sm, md, lg, xl";
+    }
+}
+
+
+@for $i from 1 through 12 {
+    .grid-#{$i} {
+        grid-column: span-#{$i};
+    }
+}
