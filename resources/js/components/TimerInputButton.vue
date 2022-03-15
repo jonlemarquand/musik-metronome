@@ -1,12 +1,8 @@
 <template>
-    <button
-        type="button"
-        class="timer-button"
-        :class="activeTask ? 'timer-button--stop' : 'timer-button--go'"
-        @click="setActive"
-    >
-        {{ activeTask ? 'STOP' : 'GO'}}
-    </button>
+    <Transition name="fade" mode="out-in">
+        <button v-if="activeTask" @click="setActive" class="timer-button timer-button--stop">STOP</button>
+        <button v-else-if="!activeTask" @click="setActive" class="timer-button timer-button--go">GO</button>
+    </Transition>
 </template>
 
 <script>
@@ -60,5 +56,15 @@ export default {
         background: $colorPink;
     }
 
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0.5;
 }
 </style>
