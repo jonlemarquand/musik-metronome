@@ -23,3 +23,8 @@ Route::get('/', function () {
 Route::get('/timer', function () {
     return Inertia::render('Timer');
 });
+
+Route::get('/account', function () {
+    return Inertia::render('Account');
+});
+
