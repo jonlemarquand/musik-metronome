@@ -1,12 +1,21 @@
 <template>
- <button class="metronome-button">{{ buttonText }}</button>
+    <Link v-if="isLink" :href="buttonLink" class="metronome-button">{{buttonText}}</Link>
+    <button v-else class="metronome-button">{{ buttonText }}</button>
 </template>
 
 <script>
+import { Link } from '@inertiajs/inertia-vue3'
+
 export default {
     name: "Button",
     props: {
         buttonText: String,
+        buttonLink: String,
+        buttonAction: String,
+        isLink: Boolean,
+    },
+    components: {
+        Link
     }
 }
 </script>
@@ -25,6 +34,7 @@ export default {
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    text-decoration: none;
     border: 0;
     border-radius: 4px;
     padding: $space-2 $space-3;

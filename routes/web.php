@@ -28,3 +28,6 @@ Route::get('/account', function () {
     return Inertia::render('Account');
 });
 
+Route::get('/account/new', function () {
+    return Inertia::render('AccountRegister');
+});
